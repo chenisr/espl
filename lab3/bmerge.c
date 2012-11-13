@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 	 memset(buffer,0,sizeof(buffer));
 	 while (numRead=(fread(buffer, 1,sizeof(int), file_read_pointer)))
 	 {
-	   fwrite(buffer, 1,sizeof(numRead),file_write_pointer);
+	   fwrite(buffer, 1,numRead,file_write_pointer);
 	   memset(buffer,0,sizeof(buffer));
 	 }
 	  
