@@ -63,10 +63,12 @@ END:    mov eax,0
 
 section .data
 
-     romode db 'r\0'
-     wmode db 'w\0'
-     buffer resb 32
+     romode db 'r',0
+     wmode db 'w',0
+     maxbytes dd 32
+     helper db "%s.%d", 0
+
+section .bss 
+	 buffer resb 32
      name resb 50
      oname resb 50
-     maxbytes dw 32
-     helper db "%s.%d"
