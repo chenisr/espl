@@ -13,7 +13,6 @@ int old_main(int argc, char **argv)
     file_read_pointer = fopen(argv[optind], "r");
     FILE* file_write_pointer;
     int buffer[maxBytes/sizeof(int)];
-    char *origin=argv[optind];
     char name[20];
     int numRead;
     while ((numRead=(fread(buffer, 1,maxBytes, file_read_pointer))))

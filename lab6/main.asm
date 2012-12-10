@@ -1,4 +1,4 @@
- section .text 
+section .text 
       global main
       extern strcpy
       extern fopen
@@ -16,14 +16,14 @@ main:   push	ebp
 	mov ebx,DWORD[ebx+4]
 	push ebx
 	push name
-	call strcpy
+	call strcpy  
 	push romode
+        push name
 	call fopen
-	mov DWORD [ebp-8], eax                     ;ebp-8 === File read pointer
+	mov DWORD[ebp-8], eax                     ;ebp-8 === File read pointer
 	jmp READ
 
-WRITE: push name
-       call printf
+WRITE: 
        push DWORD[ebp-4]
        push name
        push helper
@@ -38,38 +38,37 @@ WRITE: push name
        push DWORD 1
        push DWORD buffer
        call fwrite
-       inc DWORD[ebp-4]
-       push DWORD 32
+       add DWORD[ebp-4],1
+       push DWORD 100
        push DWORD 0
        push buffer
        call memset
 
-READ:   
-        push DWORD[ebp-8]
-        push DWORD maxbytes
- 	push DWORD 1
-	push DWORD buffer
+READ:   push DWORD [ebp-8]   
+	push DWORD [maxbytes]
+	push DWORD 1
+	push buffer
 	call fread
-	mov [ebp-16],eax        ; ebp-16   === Num of bytes Read
-	test eax,eax
+	mov DWORD[ebp-16],eax        ; ebp-16   === Num of bytes Read
+	cmp eax, 0
 	jne WRITE
-	
+
 END:    mov eax,0
 	mov esp,ebp
 	pop ebp
 	ret
 
-section .data
 
+
+
+section .data
 
      romode db 'r',0
      wmode db 'w',0
-     maxbytes dd 32
-     helper db "%s.%d", 0	
+     maxbytes dd 15
+     helper db "%s.%d"
 
-section .bss 	
-
-      buffer resb 50
-      name resb 50
-      oname resb 50
-
+section .bss 
+	 buffer resb 100
+         name resb 50
+         oname resb 50
