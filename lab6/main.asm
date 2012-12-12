@@ -65,10 +65,10 @@ section .data
 
      romode db 'r',0
      wmode db 'w',0
-     maxbytes dd 15
-     helper db "%s.%d"
+     maxbytes dd 32
+     helper db "%s.%d", 0
 
 section .bss 
-	 buffer resb 100
-         name resb 50
-         oname resb 50
+	 buffer resb 32
+     name resb 50
+     oname resb 50
