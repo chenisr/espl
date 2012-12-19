@@ -1,0 +1,7 @@
+#ifndef XSUM_H
+#define XSUM_H
+
+unsigned int xsum(int buf[]);
+
+#endif
+ 
