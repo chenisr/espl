@@ -5,3 +5,4 @@ if __name__ == '__main__':
   while (x>1):
     print(sys.argv[x-1])
     x=x-1
+    

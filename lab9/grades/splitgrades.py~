@@ -1,0 +1,24 @@
+import sys
+
+if __name__ == '__main__':
+  y=sys.argv[1]
+  f = open(y, 'r')
+  w=open ("splited_grades",'w')
+  x=f.readline()
+  x=f.readline()
+  arr= [0] * 12 
+  while (x!=""):
+    i=0
+    z=len(x)-1
+    grade=""
+    while (x[z] != ','):
+       grade=x[z]+grade
+       z=z-1
+    j=int(grade)
+    arr[j]=arr[j]+1	
+    grade=""
+    x=f.readline()
+  for i in range (0,11):
+    w.write(str(i)+ ": ")
+    w.write(str(arr[i])+"\n")
+    

@@ -1,7 +1,10 @@
 import sys
 
 if __name__ == '__main__':
+  a=reversed(sys.argv[1:])
+  print a
   x=len(sys.argv)
   while (x>1):
     print(sys.argv[x-1])
     x=x-1
+    
